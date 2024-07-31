@@ -2,6 +2,8 @@
 
 This project is a Cost Estimator application built with React for the frontend and Firebase for the backend. The application allows users to input labor, materials, and equipment details to estimate the cost and price of a paving project.
 
+Deployed UI: https://jau8.github.io/cost-estimator/
+
 ## Table of Contents
 
 - [Project Structure](#project-structure)
