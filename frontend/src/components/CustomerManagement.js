@@ -99,7 +99,7 @@ function CustomerManagement() {
           />
         </Grid>
         <Grid item xs={12}>
-          <Button onClick={handleAddCustomer} variant="contained" color="primary">
+          <Button onClick={handleAddCustomer} variant="contained" sx={{ backgroundColor: '#3a3a5a', color: '#fff', '&:hover': { backgroundColor: '#3a3a7a' } }}>
             Add Customer
           </Button>
         </Grid>
@@ -143,13 +143,13 @@ function CustomerManagement() {
           />
         </Grid>
         <Grid item xs={12}>
-          <Button onClick={handleUpdateCustomer} variant="contained" color="primary">
+          <Button onClick={handleUpdateCustomer} variant="contained" sx={{ backgroundColor: '#3a3a5a', color: '#fff', '&:hover': { backgroundColor: '#3a3a7a' } }}>
             Update Customer
           </Button>
         </Grid>
         {selectedCustomer && (
           <Grid item xs={12}>
-            <Button onClick={() => handleDeleteCustomer(selectedCustomer.id)} variant="contained" color="secondary">
+            <Button onClick={() => handleDeleteCustomer(selectedCustomer.id)} variant="contained" sx={{ backgroundColor: '#3a3a3a', color: '#fff', '&:hover': { backgroundColor: '#2a2a2a' } }}>
               Delete Customer
             </Button>
           </Grid>
@@ -188,27 +188,25 @@ function CustomerManagement() {
                           <Typography variant="h6" gutterBottom component="div">
                             Estimates
                           </Typography>
-                          <Table size="small" aria-label="estimates">
-                            <TableHead>
-                              <TableRow>
-                                <TableCell>Type</TableCell>
-                                <TableCell>Item</TableCell>
-                                <TableCell>Units</TableCell>
-                                <TableCell>Time</TableCell>
-                                <TableCell>Rate</TableCell>
-                                <TableCell>Cost</TableCell>
-                                <TableCell>Margin</TableCell>
-                                <TableCell>Price</TableCell>
-                              </TableRow>
-                            </TableHead>
-                            <TableBody>
-                              {customer.estimates?.map((estimate, index) => (
-                                <Box key={index} marginBottom={2}>
+                          {customer.estimates?.map((estimate, index) => (
+                            <Box key={index} marginBottom={2} border={1} padding={2} borderColor="grey.400">
+                              <Typography variant="subtitle1" gutterBottom>
+                                <strong>Estimate {index + 1} - {new Date(estimate.createdAt.toDate()).toLocaleString()}</strong>
+                              </Typography>
+                              <Table size="small" aria-label="estimates">
+                                <TableHead>
                                   <TableRow>
-                                    <TableCell colSpan={8}>
-                                      <strong>Estimate {index + 1}</strong>
-                                    </TableCell>
+                                    <TableCell>Type</TableCell>
+                                    <TableCell>Item</TableCell>
+                                    <TableCell>Units</TableCell>
+                                    <TableCell>Time</TableCell>
+                                    <TableCell>Rate</TableCell>
+                                    <TableCell>Cost</TableCell>
+                                    <TableCell>Margin</TableCell>
+                                    <TableCell>Price</TableCell>
                                   </TableRow>
+                                </TableHead>
+                                <TableBody>
                                   {Object.keys(estimate.detailedItems).map((type) =>
                                     estimate.detailedItems[type].map((item, idx) => (
                                       <TableRow key={idx}>
@@ -231,10 +229,10 @@ function CustomerManagement() {
                                     <TableCell colSpan={4}><strong>Total Price</strong></TableCell>
                                     <TableCell colSpan={4}>{estimate.totalPrice}</TableCell>
                                   </TableRow>
-                                </Box>
-                              ))}
-                            </TableBody>
-                          </Table>
+                                </TableBody>
+                              </Table>
+                            </Box>
+                          ))}
                         </Box>
                       </Collapse>
                     </TableCell>
